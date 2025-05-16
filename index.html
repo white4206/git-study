@@ -4,30 +4,71 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .carousel {
+        width: 400px;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 20px;
+      }
+      .carousel-images {
+        display: flex;
+        width: 1200px;
+        transition: transform 0.5s;
+      }
+      .carousel-images img {
+        width: 400px;
+        height: 200px;
+        object-fit: cover;
+      }
+      .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.5);
+        color: #fff;
+        border: none;
+        font-size: 18px;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+      .carousel-btn.left { left: 10px; }
+      .carousel-btn.right { right: 10px; }
+    </style>
   </head>
   <body>
+    <div class="carousel">
+      <div class="carousel-images" id="carouselImages">
+        <img src="https://picsum.photos/id/1015/400/200" alt="1" />
+        <img src="https://picsum.photos/id/1016/400/200" alt="2" />
+        <img src="https://picsum.photos/id/1018/400/200" alt="3" />
+      </div>
+      <button class="carousel-btn left" onclick="moveSlide(-1)">‹</button>
+      <button class="carousel-btn right" onclick="moveSlide(1)">›</button>
+    </div>
+    <!-- 轮播图结束 -->
     <div class="root">reset 撤销提交测试</div>
     <div>git cz 换行符测试</div>
     <div>合并提交消息1</div>
     <div>合并提交消息2</div>
     <div>需要合并提交之后又提交的消息1</div>
     <div>需要合并提交之后又提交的消息2</div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     <div>需要合并提交之后又提交的消息3</div>
-
     <div>需要修改的bug在这</div>
-<<<<<<< HEAD
->>>>>>> 6fedcdb (fix: 111)
-=======
     <div>需要合并提交之后又提交的消息3</div>
->>>>>>> e0e7e4e (refactor: 需要合并提交之后又提交的消息3)
-=======
-
     <div>需要修复bug的新功能后又提交的消息1</div>
     <div>需要修复bug的新功能后又提交的消息2</div>
     <div>需要修复bug的新功能后又提交的消息3</div>
->>>>>>> ac4d0e5 (refactor: 需要修复bug的新功能后又提交的消息的合并123)
+    <script>
+      let currentIndex = 0;
+      function moveSlide(step) {
+        const images = document.getElementById('carouselImages');
+        currentIndex += step;
+        if (currentIndex < 0) currentIndex = 2;
+        if (currentIndex > 2) currentIndex = 0;
+        images.style.transform = `translateX(${-400 * currentIndex}px)`;
+      }
+    </script>
   </body>
 </html>
